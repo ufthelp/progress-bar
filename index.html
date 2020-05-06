@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Progress Bar</title>
+    </head>
+    <body>
+        <p>JS Approach</p>
+        <div class="progress-bar-container">
+            <div class="bar">
+
+            </div>
+        </div>
+        <button onclick="updateJSBar()">Update JS Bar</button>
+
+        <p>CSS Approach</p>
+        <div class="progress-bar-container">
+            <div class="css-bar">
+
+            </div>
+        </div>
+        <button onclick="updateCSSBar()">Update CSS Bar</button>
+
+        <style>
+            .progress-bar-container {
+                background-color: grey;
+                width: 200px;
+                height: 30px;
+
+            }
+            .bar , .css-bar{
+                background-color: blue;
+                height: 100%;
+                width:10%;
+            }
+            
+        </style>
+    </body>
+    <script>
+        const updateJSBar = () => {
+            const initial_count = 3;
+            let duration = 0;
+            const bar = document.querySelector('.bar');
+            
+            const interval = setInterval(() => {
+                bar.style.width = `${duration}%`;
+                duration++;
+                if(duration > 100) clearInterval(interval);
+            }, (initial_count * 1000) / 100);
+        };
+
+        const updateCSSBar = () => {
+            const bar = document.querySelector('.css-bar');
+            const duration = 2;
+            bar.style.transition = `${duration}s linear width`;
+            bar.style.width = `100%`;
+        }
+    </script>
+</html>
